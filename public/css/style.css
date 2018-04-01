@@ -1,0 +1,28 @@
+#map {
+	margin: auto;
+	box-shadow: 5px 5px 2px rgba(0,0,0,0.18);
+	height: 75vh;
+	width: 95%;
+}
+.menu {
+	background-color: #f1f1f1;
+	margin: auto;
+    margin-bottom: 20px;
+	margin-top:20px;
+	width: 95%;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
+	padding: 18px;
+}
+
+.column{
+	display: block;
+	margin: 18px;
+	display:inline-block;
+	border-style: groove;
+	border-width: 1px;
+	padding: 18px;
+}
+
+.column2{
+	margin-left: 38vw;
+}
