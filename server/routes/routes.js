@@ -1,7 +1,5 @@
 module.exports = app => {
-
-	// Routes:
-
+	
 	app.get('/', (req, res) => {
 		res.render('index');
 	});
@@ -18,5 +16,12 @@ module.exports = app => {
 	app.post('/newPlace', (req, res) => {
 		// let newPlaceSchema = new Schema(req.body);
 		// let newPlaceModel = mongoose.model('place', newPlaceSchema);
+		res.status(201).json({
+			"message": "Place created",			
+		});
+	});
+
+	app.post('/removePlace', (req, res) => {
+
 	});
 }
