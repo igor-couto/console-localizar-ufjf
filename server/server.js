@@ -1,20 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const dbLocation = 'mongodb://localhost/test';
-const door = 666;
+const dbLocation = 'mongodb://localhost/localizar-ufjf';
+const door = 80;
 
 let app = express();
 
-// mongoose.connect(dbLocation);
-// let db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-// const Schema = mongoose.Schema;
+// TODO: Organize database stuff in its own file
+mongoose.connect(dbLocation);
+let db = mongoose.connection;
+db.once('open', () => {
+	console.log(' - Connected to MongoDB');
+});
+db.on('error', console.error.bind(console, ' - MongoDB connection error:'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(express.static('public'));
 
 app.listen(door, () => {
-	console.log('server running and listen on door ' + door);
+	console.log(' - Server running and listen on door ' + door + '...');
 });

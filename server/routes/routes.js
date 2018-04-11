@@ -22,6 +22,6 @@ module.exports = app => {
 	});
 
 	app.post('/removePlace', (req, res) => {
-
+		//.findByIdAndRemove(id).exec();
 	});
 }
