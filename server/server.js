@@ -1,10 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
+
+let app = require('./config/express.js');
+
 const dbLocation = 'mongodb://localhost/localizar-ufjf';
 const door = 80;
 
-let app = express();
 
 // TODO: Organize database stuff in its own file
 mongoose.connect(dbLocation);
@@ -14,9 +15,7 @@ db.once('open', () => {
 });
 db.on('error', console.error.bind(console, ' - MongoDB connection error:'));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+
 
 app.listen(door, () => {
 	console.log(' - Server running and listen on door ' + door + '...');
