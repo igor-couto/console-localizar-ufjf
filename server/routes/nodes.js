@@ -2,32 +2,39 @@ const mongoose = require('mongoose');
 
 module.exports = app => {
 
+	const nodeModel = mongoose.model('Node');
+
 	app.get('/nodes', (req, res) => {
-		let nodes;
-		res.json(nodes);
+		nodeModel
+			.find({})
+			.then( nodes => res.json(nodes) , error => res.status(500).json(error));
 	})
 
-/*	
-	app.route('/node/:id')
-		.post( ()=>{} )
-		.get( ()=>{} )
-		.put( ()=>{} )
-		.delete( ()=>{} )
-*/
-
 	app.post('/node', (req, res) => {
-		console.log('CREATE Node')
+		nodeModel
+			.create(req.body)
+			.then( node => res.json(node) , error => res.status(500).json(error));
 	});
 
 	app.get('/node/:id', (req, res) => {
-		console.log('READ Node')
+		nodeModel
+			.findById(req.params.id)
+			.then( 	 node => {
+								if(!node) throw Error('Node not found'); 
+								res.json(places); 
+							  },
+					 error => res.status(500).json(error));
 	});
 
 	app.put('/node', (req, res) => {
-		console.log('UPDATE Node')
+		nodeModel
+			.findByIdAndUpdate(req.params.id, req.body) // Verify how to obtain the id
+			.then( node => res.json(node) , error => res.status(500).json(error));
 	});
 
 	app.delete('/node/:id', (req, res) => {
-		console.log('DELETE Node')
+		nodeModel
+			.remove({ nodeID : req.params.id})
+			.then( () => res.sendStatus(204) , error => res.status(500).json(error));
 	});
 }
