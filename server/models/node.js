@@ -3,7 +3,7 @@ let Schema = mongoose.Schema;
 
 let nodeSchema = Schema({
 	nodeID: { type: Number, required: true },
-	//neighbors: { type : Schema.ObjectId, ref : 'User' }
+	neighbors: [{ type : Number }]
 });
 
 mongoose.model( 'Node', nodeSchema, 'nodes' );
