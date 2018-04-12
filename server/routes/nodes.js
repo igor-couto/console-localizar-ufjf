@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 module.exports = app => {
 
 	app.get('/nodes', (req, res) => {
@@ -7,25 +9,25 @@ module.exports = app => {
 
 /*	
 	app.route('/node/:id')
-		.create( ()=>{} )
-		.read( ()=>{} )
-		.update( ()=>{} )
+		.post( ()=>{} )
+		.get( ()=>{} )
+		.put( ()=>{} )
 		.delete( ()=>{} )
 */
 
-	app.create('/node', (req, res) => {
-
+	app.post('/node', (req, res) => {
+		console.log('CREATE Node')
 	});
 
-	app.read('/node/:id', (req, res) => {
-
+	app.get('/node/:id', (req, res) => {
+		console.log('READ Node')
 	});
 
-	app.update('/node', (req, res) => {
-
+	app.put('/node', (req, res) => {
+		console.log('UPDATE Node')
 	});
 
 	app.delete('/node/:id', (req, res) => {
-
+		console.log('DELETE Node')
 	});
 }

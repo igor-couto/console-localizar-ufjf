@@ -1,11 +1,13 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let PlaceSchema = Schema({
-	username: { type: String, required: true },
-	name: { type: String, default: '' },
-	user: { type : Schema.ObjectId, ref : 'User' },
-    createdAt: { type : Date, default : Date.now }
+let placeSchema = Schema({
+	placeID:{ type: Number, required: true },
+	name: 	{ type: String, required: true },
+	lat: 	{ type: String, required: true },
+	lng: 	{ type: String, required: true },
+	info: 	{ type: String }
+	//user: 	{ type : Schema.ObjectId, ref : 'User' },
 });
 
-module.exports = mongoose.model( 'Place', PlaceSchema, 'places' );
+mongoose.model( 'Place', placeSchema, 'places' );

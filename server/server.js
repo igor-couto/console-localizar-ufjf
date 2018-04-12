@@ -1,6 +1,6 @@
 // TODO: Use path to make path strings
-require('./config/database.js') ('localhost/localizar-ufjf');
 let app = require('./config/express.js');
+require('./config/database.js') ('localhost/localizar-ufjf');
 const door = 80;
 
 app.listen(door, () => {
