@@ -5,8 +5,7 @@ module.exports = app => {
 		res.json(places);
 	});
 
-	app.post('/createPlace', (req, res) => {
-		console.log('CREATE Place')
+	app.create('/place', (req, res) => {
 		// let newPlaceSchema = new Schema(req.body);
 		// let newPlaceModel = mongoose.model('place', newPlaceSchema);
 		console.log(req.body);
@@ -15,16 +14,15 @@ module.exports = app => {
 		});
 	});
 
-	app.get('/readPlace', (req, res) => {
-		console.log('READ Place')
+	app.read('/place', (req, res) => {
+
 	});
 
-	app.post('/updatePlace', (req, res) => {
-		console.log('UPDATE Place')
+	app.update('/place', (req, res) => {
+
 	});
 
-	app.post('/deletePlace', (req, res) => {
-		console.log('DELETE Place')
+	app.delete('/place', (req, res) => {
 		//.findByIdAndRemove(id).exec();
 		res.status(200).json({
 			"message": "Place removed",			

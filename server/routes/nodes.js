@@ -3,23 +3,29 @@ module.exports = app => {
 	app.get('/nodes', (req, res) => {
 		let nodes;
 		res.json(nodes);
+	})
+
+/*	
+	app.route('/node/:id')
+		.create( ()=>{} )
+		.read( ()=>{} )
+		.update( ()=>{} )
+		.delete( ()=>{} )
+*/
+
+	app.create('/node', (req, res) => {
+
 	});
 
-	app.get('/createNode', (req, res) => {
-		console.log(CREATE Node)
+	app.read('/node/:id', (req, res) => {
+
 	});
 
-	app.get('/readNode', (req, res) => {
-		console.log(READ Node)
-		let node;
-		res.json(node);
+	app.update('/node', (req, res) => {
+
 	});
 
-	app.get('/updateNode', (req, res) => {
-		console.log(UPDATE Node)
-	});
+	app.delete('/node/:id', (req, res) => {
 
-	app.get('/deleteNode', (req, res) => {
-		console.log(DELETE Node)
 	});
 }
