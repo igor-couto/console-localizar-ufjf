@@ -33,7 +33,6 @@ module.exports = app => {
 	});
 
 	app.delete('/place/:id', (req, res) => {
-
 		placesModel
 			.remove({ placeID : req.params.id})
 			.then( () => res.sendStatus(204) , error => res.status(500).json(error));

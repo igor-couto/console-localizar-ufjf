@@ -116,7 +116,6 @@ function getPlaces() {
             draggable: true
         });
 
-
         markers.push(marker);
     }
 }

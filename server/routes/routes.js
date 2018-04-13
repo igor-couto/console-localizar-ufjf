@@ -12,4 +12,8 @@ module.exports = app => {
 			.findOne()
 			.then( version => res.status(201).json(version) , error => res.status(500) );
 	});
+
+	app.get('/database', (req, res) => {
+		
+	});
 }

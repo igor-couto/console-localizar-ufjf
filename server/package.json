@@ -5,14 +5,30 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "babel-node server.js"
   },
   "author": "Igor Couto",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
     "body-parser": "^1.18.2",
     "consign": "^0.1.6",
     "express": "^4.16.3",
-    "mongoose": "^5.0.14"
+    "mongoose": "^5.0.14",
+    "npm": "^5.8.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "using": "^1.0.0-alpha-1",
+    "webpack": "^4.5.0",
+    "webpack-dev-middleware": "^3.1.2"
+  },
+  "babel" : {
+    "presets": ["env", "react"],
+    "env": { "presets": ["react-hmre"] }
   }
 }

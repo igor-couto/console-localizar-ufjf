@@ -1,16 +1,53 @@
-/*
 import React from 'react';
 
-
-export default class CreatePlacePanel extends React.Component {
+exports default class CreatePlacePanel extends React.Component {
 
     constructor(){
         super();
         this.state = { atributes : [{   name: '',
-                                    description : '',
-                                    categories : ['Sala de Aula', 'Cantina', 'Biblioteca', 'Departamento', 'Restaurante Universitário'],
-                                    areas : ['Geral', 'ICE', 'Engenharia']
-        }]};
+                description : '',
+                categories : ['Sala de Aula', 'Cantina', 'Biblioteca', 'Departamento', 'Restaurante Universitário'],
+                areas : ['Geral', 'ICE', 'Engenharia']
+            }]};
+        // Fazer os bind para o this da funcao ser o this da classe
+        this.setName = this.setName.bind(this);
+        this.setDescription = this.setDescription.bind(this);
+    }
+
+    // componentMount()
+    // componentDidMount()
+    componentWillMount(){
+        // Pega os dados desejados
+        //this.setState(novosDados); quando chama o setState ele chama o render
+        // .bind(this) no fim da funcao
+    }
+
+    addMarker(event){
+        event.preventDefault();
+    }
+
+    doneAdd(event){
+        event.preventDefault();
+        $.ajax({
+            url: 'http://',
+            contentType:'json',
+            type:'post',
+            data:'{}',
+            success: function(response){
+            },
+            error: function(response){
+            }
+        });
+    }
+
+    setName(event){
+        this.setState({name:event.target.value});
+        console.log(this.state);
+    }
+
+    setDescription(event){
+        this.setState({description:event.target.value});
+        console.log(this.state);
     }
 
     render(){
@@ -36,7 +73,7 @@ export default class CreatePlacePanel extends React.Component {
                             <tbody>
                             <tr>
                                 <td><label for="name">Nome: </label></td>
-                                <td><input id="name" type="text" class="form-control"/></td>
+                                <td><input id="name" type="text" class="form-control" value={this.state.name} onChange={this.setName}/></td>
                             </tr>
                             <tr>
                                 <td><label for="area">Area: </label></td>
@@ -56,7 +93,7 @@ export default class CreatePlacePanel extends React.Component {
                             </tr>
                             <tr>
                                 <td><label for="description">Descrição: </label></td>
-                                <td><textarea rows="4" cols="40"></textarea></td>
+                                <td><textarea rows="4" cols="40" value={this.state.description} onChange={this.setDescription}></textarea></td>
                             </tr>
                             </tbody>
                         </table>
@@ -66,6 +103,3 @@ export default class CreatePlacePanel extends React.Component {
         );
     }
 }
-*/
-//export default CreatePlacePanel;
-
