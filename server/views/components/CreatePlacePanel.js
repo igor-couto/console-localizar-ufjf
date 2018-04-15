@@ -1,6 +1,6 @@
 import React from 'react';
 
-exports default class CreatePlacePanel extends React.Component {
+export default class CreatePlacePanel extends React.Component {
 
     constructor(){
         super();
