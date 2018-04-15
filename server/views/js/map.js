@@ -44,6 +44,8 @@ function initMap() {
     getPlaces();
 }
 
+window.initMap = initMap;
+
 function toggleAddPlaces(){
     map.addListener('click', function(event){
         addNewPlace(event.latLng);
