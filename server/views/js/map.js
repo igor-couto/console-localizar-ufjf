@@ -1,4 +1,4 @@
-const markers = [];
+let markers = [];
 let map;
 let newMarker;
 
@@ -17,6 +17,8 @@ function initMap() {
         zoomControl: false,
         center: UFJF
     });
+
+    map.setClickableIcons(false);
 
     // Adiciona controladores de visualização de lugares ou nós
     let placesAndNodesControlDiv = document.createElement('div');

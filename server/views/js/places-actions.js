@@ -7,19 +7,18 @@ function registerNewPlace(){
         lng  :  lngField.attr("placeholder"),
         info :  infoField.val()
     };
-    let success = () => {
+    let success = result => {
         let marker = copyMarker(newMarker);
-        newMarker = null;
+        removeMarker(newMarker);
         marker.title = newPlace.name;
         marker.area = newPlace.area;
         marker.info = newPlace.info;
         marker.icon = 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi2_hdpi.png';
         markers.push(marker);
-        clearPlaceForm();
         // TODO: Don't go to server to fill places again
         //showPlaces();
         getPlaces();
-        console.log('Local cadastrado com sucesso: ' + marker);
+        console.log('Local ' + marker.title + ' cadastrado com sucesso');
     }
     let fail = (err, status) => {
         console.log('Erro ao fazer post: ' + err + status);
@@ -48,7 +47,7 @@ function editPlace(){
         type: 'PUT',
         data : newPlace,
         success: result => {
-            console.log('Edicao feita com sucesso!');
+            console.log('Edição realizada com sucesso!');
             clearPlaceForm();
             getPlaces();
         },
@@ -66,16 +65,10 @@ function deletePlace(){
     $.ajax({ 
         url: url + 'place/' + id,
         type: 'DELETE',
-        success: (result) => {
-            console.log('Lugar excluido com sucesso.');
-            markers.forEach( (marker, id) => {
-                if(marker._id === id){
-                    marker.setMap(null);
-                    delete markers[marker.index];
-                    clearPlaceForm();
-                    getPlaces();
-                }
-            });
+        success: result => {
+            console.log('Lugar ' + id + ' excluido com sucesso.');
+            removeMarkerById(id);
+            clearPlaceForm();
         },
         error: (req, status, err ) => {
             console.log('Erro ao deletar!');

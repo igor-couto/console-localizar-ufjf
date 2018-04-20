@@ -7,11 +7,18 @@ function clearPlaceForm(){
     infoField.val("");
 }
 
-function removeMarker(marker){
-    if(marker){    
-        marker.setMap(null);
-        marker = {};
+function removeMarker(markerToRemove){
+    if(markerToRemove){    
+        markerToRemove.setMap(null);
+        markers = markers.filter( marker => marker._id !== markerToRemove._id );
+        markerToRemove = null;
     }
+}
+
+function removeMarkerById(id){
+    let markerToRemove = markers.find( (marker) => marker.placeID === id );
+    console.log(markerToRemove);
+    removeMarker(markerToRemove);
 }
 
 function showPlaces() {
