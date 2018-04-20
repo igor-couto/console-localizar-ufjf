@@ -51,18 +51,18 @@ function PlacesAndNodesControl(controlDiv, map) {
     nodesControlText.innerHTML = 'Mostrar Nós';
     nodesControlUI.appendChild(nodesControlText);
 
-    placesControlUI.addEventListener('click', function () {
+    placesControlUI.addEventListener('click',  () => {
         if (isShowingPlaces){
             placesControlText.style.fontWeight = 'normal';
-            hideMarkers();
+            hidePlaces();
         } else {
             placesControlText.style.fontWeight = 'bold';
-            showMarkers();
+            showPlaces();
         }
         isShowingPlaces = !isShowingPlaces;
     });
 
-    nodesControlUI.addEventListener('click', function () {
+    nodesControlUI.addEventListener('click',  () => {
         if (isShowingNodes){
             nodesControlText.style.fontWeight = 'normal';
         } else {
