@@ -28,5 +28,5 @@ function initMap() {
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(placesAndNodesControlDiv);
     
     getPlaces();
-    $(document).ready(toggleViewPlaces());
+    $(document).ready(toggleInspectPlaces());
 }

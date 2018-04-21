@@ -5,30 +5,15 @@ let editButton      = $('#edit-button');
 let placeIdField    = $('#place-id');
 let nameField       = $('#name');
 let areaField       = $('#area');
-let areaTextField   = $('#area-text');
 let latField        = $('#lat');
 let lngField        = $('#lng');
 let infoField       = $('#info');
 
-
-function toggleViewPlaces() {
-
-    markers.forEach( marker => makeMarkerInspectable(marker) );
-
-    removeMarker(newMarker);
-    clearPlaceForm();
-    areaTextField.show();
-    areaField.hide();
-    nameField.prop("readonly", true);
-    infoField.prop("readonly", true);
-
-    editButton.hide();
-    deleteButton.hide();
-    createButton.hide();
-}
+let inspectPlacesPill = $('#inspect-place-pill');
+let newPlacesPill = $('#new-place-pill');
 
 function toggleCreatePlaces() {
-
+    newPlacesPill.addClass('active').siblings().removeClass('active');  
     clearPlaceForm();
     google.maps.event.clearListeners(map, 'click');
 
@@ -60,18 +45,13 @@ function toggleCreatePlaces() {
 
     newMarker.addListener('click', () => infowindow.open(newMarker.get('map'), newMarker) );
 
-    nameField.prop("readonly", false);
-    infoField.prop("readonly", false);
-    areaTextField.hide();
-    areaField.show();
-    deleteButton.hide();
-
     createButton.show();
     deleteButton.hide();
     editButton.hide();
 }
 
-function toggleEditPlaces() {
+function toggleInspectPlaces() {
+    inspectPlacesPill.addClass('active').siblings().removeClass('active');  
     clearPlaceForm();
     markers.forEach( marker => {
         makeMarkerDraggable(marker);
@@ -79,13 +59,6 @@ function toggleEditPlaces() {
     });
 
     removeMarker(newMarker);
-    nameField.prop("readonly", false);
-    infoField.prop("readonly", false);
-    nameField.prop("readonly", false);
-    areaTextField.hide();
-    areaField.show();
-    deleteButton.show();
-
     createButton.hide();
     deleteButton.show();
     editButton.show();

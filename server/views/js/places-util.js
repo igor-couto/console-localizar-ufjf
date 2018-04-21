@@ -1,7 +1,6 @@
 function clearPlaceForm(){
     nameField.val("");
     areaField.val("");
-    areaTextField.val("");
     latField.attr("placeholder", "");
     lngField.attr("placeholder", "");
     infoField.val("");
@@ -103,7 +102,6 @@ function makeMarkerInspectable(marker){
         marker.addListener('click', () => {
             nameField.val(marker.title);
             areaField.val(marker.area);
-            areaTextField.val(marker.area);
             latField.attr("placeholder", marker.position.lat);
             lngField.attr("placeholder", marker.position.lng);
             infoField.val(marker.info);

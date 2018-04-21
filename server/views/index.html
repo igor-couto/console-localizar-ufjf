@@ -28,17 +28,16 @@
               <div id="lugares" class="tab-pane fade in active">
                 <br>
                 <ul class="nav nav-pills nav-justified">
-                  <li id="view-place-pill"><a href="javascript:toggleViewPlaces()">Ver</a></li>
-                  <li id="edit-place-pill"><a href="javascript:toggleEditPlaces()">Editar</a></li>
+                  <li class="active" id="inspect-place-pill"><a href="javascript:toggleInspectPlaces()">Inspecionar</a></li>
                   <li id="new-place-pill"><a href="javascript:toggleCreatePlaces()">Adicionar Novo</a></li>
                 </ul>
                 <br>
 
-                <form action="javascript:registerNewPlace();" method="post">
+                <form>
                     <input type="text" id="place-id" value=" " hidden>
                     <div class="form-row">
-                        <label for="name">Nome </label>
-                        <input class="form-control" type="text" id="name" name="name" readonly required>
+                        <label for="name">Nome</label>
+                        <input class="form-control" type="text" id="name" required>
                     </div>
                     <div class="form-row">
                         <label for="area">Area</label>
@@ -50,9 +49,6 @@
                             <option value="ICH">ICH</option>
                             <option value="Reitoria">Reitoria</option>
                         </select>
-                    </div>
-                        <input class="form-control" type="text" id="area-text" name="area-text" readonly hidden>
-                    <div>
                         
                     </div>
 
@@ -66,7 +62,7 @@
                     </div>
                     <div class="form-row">
                         <label for="info">Descrição</label>
-                        <textarea class="form-control" id="info" rows="4" cols="40" readonly></textarea>
+                        <textarea class="form-control" id="info" rows="4" cols="40"></textarea>
                         <div class="form-row">
 
                             <div class="form-group row">
@@ -106,8 +102,7 @@
               <div id="nos" class="tab-pane fade">
 
                 <ul class="nav nav-pills nav-justified">
-                  <li class="active"><a href="#">Ver</a></li>
-                  <li><a href="#">Editar</a></li>
+                  <li class="active"><a href="#">Inspecionar</a></li>
                   <li><a href="#">Adicionar Novo</a></li>
                 </ul>
 
