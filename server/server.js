@@ -1,4 +1,3 @@
-// TODO: Use path to make path strings
 let app = require('./config/express.js');
 require('./config/database.js') ('localhost/localizar-ufjf');
 const door = 80;

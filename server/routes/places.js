@@ -1,3 +1,4 @@
+// TODO: handle erros in a proper way
 const mongoose = require('mongoose');
 
 module.exports = app => {
@@ -11,11 +12,16 @@ module.exports = app => {
 	});
 
 	app.post('/place', (req, res) => {
-		placesModel
-			.create(req.body)
-			.then( place => res.json(place) , error => res.status(500).json(error));
+		if(validatePlace(req.body)){
+			placesModel
+				.create(req.body)
+				.then( place => res.json(place) , error => res.status(500).json(error));
+		} else{
+			res.status(400);
+		}
 	});
 
+	// READ place. Will be used?
 	app.get('/place/:id', (req, res) => {
 		placesModel
 			.findById(req.params.id)
@@ -26,7 +32,7 @@ module.exports = app => {
 					 error => res.status(500).json(error));
 	});
 
-	app.put('/place', (req, res) => {
+	app.put('/place/:id', (req, res) => {
 		placesModel
 			.findByIdAndUpdate(req.params.id, req.body) // Verify how to obtain the id
 			.then( place => res.json(place) , error => res.status(500).json(error));
@@ -34,7 +40,22 @@ module.exports = app => {
 
 	app.delete('/place/:id', (req, res) => {
 		placesModel
-			.remove({ placeID : req.params.id})
+			.remove({ _id : req.params.id})
 			.then( () => res.sendStatus(204) , error => res.status(500).json(error));
 	});
+
+
+	// Make it better
+	function validatePlace(place){
+		if( place.hasOwnProperty('name') &&
+			place.hasOwnProperty('area') && 
+			place.hasOwnProperty('lat')  &&
+			place.hasOwnProperty('lng')  ){
+
+			if(place.name !== "" && place.lat !== "" && place.lng !== "" && place.area !== "" )
+				return true;
+			else
+				return false;
+		}
+	}
 }

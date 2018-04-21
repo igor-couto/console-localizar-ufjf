@@ -1,71 +1,159 @@
 <!DOCTYPE html>
 <html>
-  <head>
-      <script src='bundle.js'></script>
-      <title>Painel LocalizAR UFJF</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width">
-  </head>
-  <body>
-  <br>
-  
-  <div id="map"></div>
 
-  <div class="menu">
+<head>
+    <title>Painel LocalizAR UFJF</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <br>
+    <div id="map"></div>
+    <div class="menu">
         <div class="container">
-            <div class="card text-center">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#placesMenu"role="tab">Lugares</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#nodesMenu" role="tab">Nós</a>
-                        </li>
-                    </ul>
-                </div>
 
-                <div class="card-body">
-                    <div id="placesMenu" class="tab-pane fade in active show">
-                        <div id="left-column">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#lugares"><span class="glyphicon glyphicon-map-marker"></span> Lugares</a></li>
+              <li><a data-toggle="tab" href="#nos"><span class="glyphicon glyphicon-resize-full"></span> Nós</a></li>
+            </ul>
+
+            <div class="tab-content">
+
+              <!-- Place Options -->
+              <div id="lugares" class="tab-pane fade in active">
+                <br>
+                <ul class="nav nav-pills nav-justified">
+                  <li id="view-place-pill"><a href="javascript:toggleViewPlaces()">Ver</a></li>
+                  <li id="edit-place-pill"><a href="javascript:toggleEditPlaces()">Editar</a></li>
+                  <li id="new-place-pill"><a href="javascript:toggleCreatePlaces()">Adicionar Novo</a></li>
+                </ul>
+                <br>
+
+                <form action="javascript:registerNewPlace();" method="post">
+                    <input type="text" id="place-id" value=" " hidden>
+                    <div class="form-row">
+                        <label for="name">Nome </label>
+                        <input class="form-control" type="text" id="name" name="name" readonly required>
+                    </div>
+                    <div class="form-row">
+                        <label for="area">Area</label>
+                        <select class="custom-select form-control"" id="area" required>
+                            <option value="">Areas...</option>
+                            <option value="ICE">ICE</option>
+                            <option value="Engenharia">Engenharia</option>
+                            <option value="ICB">ICB</option>
+                            <option value="ICH">ICH</option>
+                            <option value="Reitoria">Reitoria</option>
+                        </select>
+                    </div>
+                        <input class="form-control" type="text" id="area-text" name="area-text" readonly hidden>
+                    <div>
+                        
+                    </div>
+
+                    <div class="form-row">
+                        <label for="lat">Latitude</label>
+                        <input class="form-control" type="text" id="lat" name="lat" placeholder="Latitude" readonly required>
+                    </div>
+                    <div class="form-row">
+                        <label for="lng">Longitude</label>
+                        <input class="form-control" type="text" id="lng" name="lng" placeholder="Longitude" readonly required>
+                    </div>
+                    <div class="form-row">
+                        <label for="info">Descrição</label>
+                        <textarea class="form-control" id="info" rows="4" cols="40" readonly></textarea>
+                        <div class="form-row">
+
+                            <div class="form-group row">
+                                <br>
+
+                                <div class="btn-toolbar" role="toolbar">
+
+                                    <div class="btn-group mr-2" role="group">
+                                        <div id="edit-button" hidden>
+                                            <button onclick="editPlace()" type="button" class="btn btn-primary">Editar</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-group mr-2" role="group">
+                                        <div id="delete-button" hidden>
+                                            <button onclick="deletePlace()" type="button" class="btn btn-danger">Remover</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="btn-group mr-2" role="group">
+                                        <div id="create-button" hidden>
+                                            <button onclick="registerNewPlace()" type="button" class="btn btn-success">Criar Lugar</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>
+                </form>
 
-                    <div id="nodesMenu" class="tab-pane fade">
-                        <div id="right-column">
+              </div>
 
-                        </div>
+              <!-- Node Options -->
+              <div id="nos" class="tab-pane fade">
+
+                <ul class="nav nav-pills nav-justified">
+                  <li class="active"><a href="#">Ver</a></li>
+                  <li><a href="#">Editar</a></li>
+                  <li><a href="#">Adicionar Novo</a></li>
+                </ul>
+
+                <form action="javascript:registerNewPlace();" method="post">
+                    <input type="text" id="place-id" hidden>
+                    <div class="form-row">
+                        <label for="node-name">ID</label>
+                        <input class="form-control" type="text" id="node-name" readonly required >
                     </div>
-                </div>
+
+                    <div class="form-row">
+                        <label for="node-lat">Latitude</label>
+                        <input class="form-control" type="text" id="node-lat" placeholder="Latitude" readonly required>
+                    </div>
+                    <div class="form-row">
+                        <label for="node-lng">Longitude</label>
+                        <input class="form-control" type="text" id="node-lng" placeholder="Longitude" readonly required>
+                    </div>
+                </form>
+
+              </div>
+
             </div>
-        </div>
-  </div>
-  </body>
 
-<div id="scripts">
-  
-      <!-- React and Babel -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.1.0/react-dom.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+        </div> <!--  class="container" -->
+    </div> <!-- class="menu" --> 
 
-      <!-- JQuery -->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <div id="scriptsAndCss">
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-      <!-- Bootstrap -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
-<!--
-      <script src="js/map.js"></script>
-      <script src="js/map-custom-controls.js"></script>
-      <script src="js/main.js" type="text/babel"></script>
--->
-      <!-- Google Map Script -->
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA-S3SFZzXjgaAe4PMva1i_vnXFk9ebtg&callback=initMap"></script>
+        <!-- Google Map Script -->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA-S3SFZzXjgaAe4PMva1i_vnXFk9ebtg&callback=initMap"></script>
 
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-</div>
+        <script src="js/places-util.js"></script>
+        <script src="js/places-actions.js"></script>
+        <script src="js/map.js"></script>
+        <script src="js/places.js"></script>
+        <script src="js/nodes.js"></script>
+        <script src="js/map-custom-controls.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </div>
+
+
+</body>
+
+
 </html>
