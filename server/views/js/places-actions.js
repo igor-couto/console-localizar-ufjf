@@ -18,10 +18,12 @@ function registerNewPlace(){
         // TODO: Don't go to server to fill places again
         //showPlaces();
         getPlaces();
-        console.log('Local ' + marker.title + ' cadastrado com sucesso');
+        let message = 'Local ' + marker.title + ' cadastrado com sucesso';
+        alertMessage.success(message);
     }
     let fail = (err, status) => {
-        console.log('Erro ao fazer post: ' + err + status);
+        let message = 'Erro ao cadastrar: ' + status + err;
+        alertMessage.error(message);
     }
 
     $.post( url + 'place', newPlace)
@@ -47,14 +49,14 @@ function editPlace(){
         type: 'PUT',
         data : newPlace,
         success: result => {
-            console.log('Edição realizada com sucesso!');
+            let message = 'Edição realizada com sucesso!';
+            alertMessage.success(message);
             clearPlaceForm();
             getPlaces();
         },
         error: (req, status, err ) => {
-            console.log('Erro ao atualizar!');
-            console.log(status);
-            console.log(err);
+            let message = 'Não foi possivel editar: ' + status + err;
+            alertMessage.error(message);
         }
     });
 }
@@ -65,14 +67,14 @@ function deletePlace(){
         url: url + 'place/' + id,
         type: 'DELETE',
         success: result => {
-            console.log('Lugar ' + id + ' excluido com sucesso.');
+            let message = 'Lugar ' + nameField + ' excluido com sucesso.';
+            alertMessage.error(message);
             removeMarkerById(id);
             clearPlaceForm();
         },
         error: (req, status, err ) => {
-            console.log('Erro ao deletar!');
-            console.log(status);
-            console.log(err);
+            let message = 'Não foi possivel deletar: ' + status + err;
+            alertMessage.error(message);
         }
     });    
 }
