@@ -61,7 +61,6 @@ function editPlace(){
 
 function deletePlace(){
     let id = placeIdField.val();
-
     $.ajax({ 
         url: url + 'place/' + id,
         type: 'DELETE',

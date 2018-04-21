@@ -17,7 +17,6 @@ function removeMarker(markerToRemove){
 
 function removeMarkerById(id){
     let markerToRemove = markers.find( (marker) => marker.placeID === id );
-    console.log(markerToRemove);
     removeMarker(markerToRemove);
 }
 
