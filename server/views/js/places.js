@@ -28,7 +28,8 @@ function toggleCreatePlaces() {
         animation: google.maps.Animation.DROP,
         title: 'Novo Lugar',
         opacity: 0.85,
-        icon: '/img/new-place-pin.png'
+        icon: '/img/new-place-pin.png',
+        zIndex: 10
     });
 
     latField.attr("placeholder", newMarker.position.lat );
@@ -51,8 +52,7 @@ function toggleCreatePlaces() {
 }
 
 function toggleInspectPlaces() {
-    inspectPlacesPill.addClass('active').siblings().removeClass('active');  
-    clearPlaceForm();
+    inspectPlacesPill.addClass('active').siblings().removeClass('active');
     markers.forEach( marker => {
         makeMarkerDraggable(marker);
         makeMarkerInspectable(marker);

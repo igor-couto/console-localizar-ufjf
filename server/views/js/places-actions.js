@@ -20,6 +20,7 @@ function registerNewPlace(){
         getPlaces();
         let message = 'Local ' + marker.title + ' cadastrado com sucesso';
         alertMessage.success(message);
+        toggleInspectPlaces();
     }
     let fail = (err, status) => {
         let message = 'Erro ao cadastrar: ' + status + err;
@@ -51,7 +52,6 @@ function editPlace(){
         success: result => {
             let message = 'Edição realizada com sucesso!';
             alertMessage.success(message);
-            clearPlaceForm();
             getPlaces();
         },
         error: (req, status, err ) => {
@@ -68,7 +68,7 @@ function deletePlace(){
         type: 'DELETE',
         success: result => {
             let message = 'Lugar ' + nameField + ' excluido com sucesso.';
-            alertMessage.error(message);
+            alertMessage.success(message);
             removeMarkerById(id);
             clearPlaceForm();
         },
