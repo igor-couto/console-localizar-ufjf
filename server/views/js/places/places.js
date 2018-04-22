@@ -1,13 +1,13 @@
-let createButton    = $('#create-button');
-let deleteButton    = $('#delete-button');
-let editButton      = $('#edit-button');
+let createButton  = $('#create-button');
+let deleteButton  = $('#delete-button');
+let editButton    = $('#edit-button');
 
-let placeIdField    = $('#place-id');
-let nameField       = $('#name');
-let areaField       = $('#area');
-let latField        = $('#lat');
-let lngField        = $('#lng');
-let infoField       = $('#info');
+let placeIdField  = $('#place-id');
+let nameField     = $('#name');
+let areaField     = $('#area');
+let latField      = $('#lat');
+let lngField      = $('#lng');
+let infoField     = $('#info');
 
 let inspectPlacesPill = $('#inspect-place-pill');
 let newPlacesPill = $('#new-place-pill');

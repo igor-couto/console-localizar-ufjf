@@ -88,15 +88,15 @@
               <div id="nos" class="tab-pane fade">
 
                 <ul class="nav nav-pills nav-justified nav-pills-custom">
-                  <li class="active"><a href="#">Inspecionar</a></li>
-                  <li><a href="#">Adicionar Novo</a></li>
+                  <li class="active" id="inspect-node-pill"><a href="javascript:toggleInspectNodes()">Inspecionar</a></li>
+                  <li id="new-node-pill"><a href="javascript:toggleCreateNodes()">Adicionar Novo</a></li>
                 </ul>
 
                 <form class="menu-form">
-                    <input type="text" id="place-id" hidden>
+                    <input type="text" id="node-id" hidden>
                     <div class="form-row">
-                        <label for="node-name">ID</label>
-                        <input class="form-control" type="text" id="node-name" readonly required >
+                        <label for="name-node">ID</label>
+                        <input class="form-control" type="text" id="name-node" readonly required >
                     </div>
                     <div class="form-group row latlng-input">
                         <div class="form-group col-xs-6">
@@ -109,6 +109,23 @@
                             <input class="form-control" type="text" id="lng-node" placeholder="Longitude" readonly required>
                         </div>
                     </div>
+
+                    <div class="form-group row buttons">
+
+                        <div id="edit-node-button" class="form-group col-xs-1" hidden>
+                            <button onclick="editPlace()" type="button" class="btn btn-primary custom-btn btn-block">Editar</button>
+                        </div>
+
+                        <div id="delete-node-button" class="form-group col-xs-1" hidden>
+                            <button onclick="deletePlace()" type="button" class="btn btn-danger custom-btn btn-block">Remover</button>
+                        </div>
+                    
+                        <div id="create-node-button" class="form-group col-xs-1" hidden>
+                            <button onclick="registerNewPlace()" type="button" class="btn btn-success">Criar Lugar</button>
+                        </div>      
+                        
+                    </div>
+
                 </form>
               </div>
             </div>
@@ -123,18 +140,23 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
-        <!-- Google Map Script -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA-S3SFZzXjgaAe4PMva1i_vnXFk9ebtg&callback=initMap"></script>
 
-        <script src="js/places-util.js"></script>
-        <script src="js/places-actions.js"></script>
+        <script src="js/places/places-util.js"></script>
+        <script src="js/places/places-actions.js"></script>
+        <script src="js/places/places.js"></script>
+
+        <script src="js/nodes/nodes-util.js"></script>
+        <script src="js/nodes/nodes-actions.js"></script>
+        <script src="js/nodes/nodes.js"></script>
+        
         <script src="js/map.js"></script>
         <script src="js/util.js"></script>
-        <script src="js/places.js"></script>
-        <script src="js/nodes.js"></script>
         <script src="js/map-custom-controls.js"></script>
 
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        
+        <!-- Google Map Script -->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA-S3SFZzXjgaAe4PMva1i_vnXFk9ebtg&callback=initMap"></script>
     </div>
 </body>
 </html>

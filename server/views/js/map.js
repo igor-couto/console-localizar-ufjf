@@ -1,6 +1,8 @@
 let markers = [];
+let nodes = [];
 let map;
 let newMarker;
+let newNodeMarker;
 
 let isShowingPlaces = true;
 let isShowingNodes = false;
@@ -28,5 +30,6 @@ function initMap() {
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(placesAndNodesControlDiv);
     
     getPlaces();
+    getNodes();
     $(document).ready(toggleInspectPlaces());
 }
