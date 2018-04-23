@@ -26,9 +26,9 @@ module.exports = app => {
 					 error => res.status(500).json(error));
 	});
 
-	app.put('/node', (req, res) => {
+	app.put('/node/:id', (req, res) => {
 		nodeModel
-			.findByIdAndUpdate(req.params.id, req.body) // Verify how to obtain the id
+			.findByIdAndUpdate(req.params.id, req.body)
 			.then( node => res.json(node) , error => res.status(500).json(error));
 	});
 

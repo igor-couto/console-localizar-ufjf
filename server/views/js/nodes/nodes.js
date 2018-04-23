@@ -1,4 +1,3 @@
-let createNodeButton  = $('#create-node-button');
 let deleteNodeButton  = $('#delete-node-button');
 let editNodeButton    = $('#edit-node-button');
 
@@ -30,12 +29,12 @@ function toggleCreateNodes() {
         zIndex: 10
     });
 
-    latField.attr("placeholder", newNodeMarker.position.lat );
-    lngField.attr("placeholder", newNodeMarker.position.lng );
+    latNodeField.attr("placeholder", newNodeMarker.position.lat );
+    lngNodeField.attr("placeholder", newNodeMarker.position.lng );
 
     newNodeMarker.addListener('drag', () => {
-        latField.attr("placeholder", newNodeMarker.position.lat );
-        lngField.attr("placeholder", newNodeMarker.position.lng );
+        latNodeField.attr("placeholder", newNodeMarker.position.lat );
+        lngNodeField.attr("placeholder", newNodeMarker.position.lng );
     });
 
     let infowindow = new google.maps.InfoWindow({
@@ -44,11 +43,9 @@ function toggleCreateNodes() {
 
     newNodeMarker.addListener('click', () => infowindow.open(newNodeMarker.get('map'), newNodeMarker) );
 
-    createButton.show();
-    deleteButton.hide();
-    editButton.hide();
+    deleteNodeButton.hide();
+    editNodeButton.hide();
 }
-
 
 function toggleInspectNodes() {
     inspectNodesPill.addClass('active').siblings().removeClass('active');
@@ -58,7 +55,6 @@ function toggleInspectNodes() {
     });
 
     removeNode(newNodeMarker);
-    createNodeButton.hide();
     deleteNodeButton.show();
     editNodeButton.show();
 }

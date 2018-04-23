@@ -7,7 +7,7 @@ function registerNewNode(){
     };
     let success = result => {
         let marker = copyMarker(newMarker);
-        removeMarker(newMarker);
+        removeNode(newMarker);
         marker.title = newNode.name;
         marker.area = newNode.area;
         marker.info = newNode.info;
@@ -15,7 +15,7 @@ function registerNewNode(){
         markers.push(marker);
         // TODO: Don't go to server to fill places again
         //showPlaces();
-        getPlaces();
+        getNodes();
         let message = 'Local ' + marker.title + ' cadastrado com sucesso';
         alertMessage.success(message);
         toggleInspectPlaces();

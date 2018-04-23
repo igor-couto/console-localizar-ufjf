@@ -89,22 +89,26 @@
 
                 <ul class="nav nav-pills nav-justified nav-pills-custom">
                   <li class="active" id="inspect-node-pill"><a href="javascript:toggleInspectNodes()">Inspecionar</a></li>
-                  <li id="new-node-pill"><a href="javascript:toggleCreateNodes()">Adicionar Novo</a></li>
+                  <li id="new-node-pill"><a href="javascript:toggleCreateNodes()">Adicionar Nós</a></li>
                 </ul>
 
                 <form class="menu-form">
                     <input type="text" id="node-id" hidden>
-                    <div class="form-row">
-                        <label for="name-node">ID</label>
-                        <input class="form-control" type="text" id="name-node" readonly required >
-                    </div>
+
                     <div class="form-group row latlng-input">
-                        <div class="form-group col-xs-6">
+                        
+                        <div class="form-group col-xs-2">
+                            <label for="name-node">ID</label>
+                            <input class="form-control" type="text" id="name-node" readonly required >
+                        </div>
+
+
+                        <div class="form-group col-xs-5">
                             <label for="lat-node">Latitude</label>
                             <input class="form-control" type="text" id="lat-node" placeholder="Latitude" readonly required>    
                         </div>
                         
-                        <div class="form-group col-xs-6">
+                        <div class="form-group col-xs-5">
                             <label for="lng-node">Longitude</label>
                             <input class="form-control" type="text" id="lng-node" placeholder="Longitude" readonly required>
                         </div>
@@ -119,10 +123,6 @@
                         <div id="delete-node-button" class="form-group col-xs-1" hidden>
                             <button onclick="deletePlace()" type="button" class="btn btn-danger custom-btn btn-block">Remover</button>
                         </div>
-                    
-                        <div id="create-node-button" class="form-group col-xs-1" hidden>
-                            <button onclick="registerNewPlace()" type="button" class="btn btn-success">Criar Lugar</button>
-                        </div>      
                         
                     </div>
 
