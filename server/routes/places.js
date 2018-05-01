@@ -44,7 +44,6 @@ module.exports = app => {
 			.then( () => res.sendStatus(204) , error => res.status(500).json(error));
 	});
 
-
 	// Make it better
 	function validatePlace(place){
 		if( place.hasOwnProperty('name') &&
