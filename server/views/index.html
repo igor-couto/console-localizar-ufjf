@@ -39,7 +39,7 @@
 
                     <div class="form-row">
                         <label for="area">Area</label>
-                        <select class="custom-select form-control"" id="area" required>
+                        <select class="custom-select form-control" id="area" required>
                             <option value="">Areas...</option>
                             <option value="ICE">ICE</option>
                             <option value="Engenharia">Engenharia</option>
@@ -64,6 +64,31 @@
                     <div class="form-row">
                         <label for="info">Descrição</label>
                         <textarea class="form-control" id="info" rows="4" cols="40"></textarea>
+                    </div>
+
+                    <!-- AQUI  -->
+                    <div class="form-row">
+                        
+                        <div class="form-group col-xs-2">
+                            <input class="form-control" id="model-name" hidden>
+                            <select class="custom-select form-control" id="model-name-selection">
+                            <option value="">Modelo 3D...</option>
+                                <option value="ICE">ICE</option>
+                            </select>
+                            <canvas id="model-canvas" width="200" height="100"></canvas>
+                            <input type="file" class="custom-file-input" id="model-upload" multiple="multiple">
+                        </div>
+
+                        <div class="form-group col-xs-2">
+                            <input class="form-control" id="icon-name" hidden>
+                            <select class="custom-select form-control" id="icon-name">
+                            <option value="">Icone...</option>
+                                <option value="ICE">ICE</option>
+                            </select>
+                            <canvas id="model-canvas" width="200" height="100"></canvas>
+                            <input type="file" class="custom-file-input" id="icon-upload">
+                        </div>
+
                     </div>
 
                     <div class="form-group row buttons">
