@@ -39,3 +39,12 @@
 .custom-btn {
 	width: 80px;
 }
+.icon-container {
+	margin-left: 40%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-height: 120px;
+}
+.model-container {
+	max-height: 120px;
+}
