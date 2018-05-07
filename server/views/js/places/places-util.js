@@ -70,41 +70,41 @@ function getPlaces() {
 }
 
 function makeMarkerDraggable(marker){
-        markers.forEach( marker => {
-            marker.setMap(null);
-        });
+    markers.forEach( marker => {
+        marker.setMap(null);
+    });
 
-        marker.draggable = true;
+    marker.draggable = true;
 
-        google.maps.event.addListener(marker, 'drag', () => {
-            latField.attr("placeholder", marker.position.lat );
-            lngField.attr("placeholder", marker.position.lng );
-        });
+    google.maps.event.addListener(marker, 'drag', () => {
+        latField.attr("placeholder", marker.position.lat );
+        lngField.attr("placeholder", marker.position.lng );
+    });
 
-        markers.forEach( marker => {
-            marker.setMap(map);
-        });
+    markers.forEach( marker => {
+        marker.setMap(map);
+    });
 }
 
 function unmakeMarkerDraggable(){
-        markers.forEach( marker => {
-            marker.setMap(null);
-        });
+    markers.forEach( marker => {
+        marker.setMap(null);
+    });
 
-        marker.draggable = false;
+    marker.draggable = false;
 
-        markers.forEach( marker => {
-            marker.setMap(map);
-        });
+    markers.forEach( marker => {
+        marker.setMap(map);
+    });
 }
 
 function makeMarkerInspectable(marker){
-        marker.addListener('click', () => {
-            nameField.val(marker.title);
-            areaField.val(marker.area);
-            latField.attr("placeholder", marker.position.lat);
-            lngField.attr("placeholder", marker.position.lng);
-            infoField.val(marker.info);
-            placeIdField.val(marker.placeID);
-        });
+    marker.addListener('click', () => {
+        nameField.val(marker.title);
+        areaField.val(marker.area);
+        latField.attr("placeholder", marker.position.lat);
+        lngField.attr("placeholder", marker.position.lng);
+        infoField.val(marker.info);
+        placeIdField.val(marker.placeID);
+    });
 }
